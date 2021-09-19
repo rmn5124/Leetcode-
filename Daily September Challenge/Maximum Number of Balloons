@@ -1,0 +1,23 @@
+//https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/637/week-2-september-8th-september-14th/3973/
+
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        map<char,int>m;
+        for(auto i:text)
+            m[i]++;
+        int freq=INT_MAX,o=0,l=0;
+        for(auto i:m){
+            if(i.first=='b' or i.first=='a'  or i.first=='n' )
+                freq=min(freq,i.second);
+                else if(i.first=='l' ) 
+                    l=i.second;
+                    else if(i.first=='o')
+                        o=i.second;
+                
+        }
+        if(freq==INT_MAX) freq=0;
+        int ans=min({l/2,o/2,freq});
+        return ans;
+    }
+};
