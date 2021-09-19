@@ -1,0 +1,27 @@
+//https://leetcode.com/problems/number-of-islands/
+
+class Solution {
+public:
+    void mark(vector<vector<char>>& grid,int n,int m,int r,int l){
+        if(n<0 or n>=r or m<0 or m>=l or grid[n][m]!='1') return;
+        grid[n][m]='2';
+        mark(grid,n+1,m,r,l);
+         mark(grid,n-1,m,r,l);
+         mark(grid,n,m+1,r,l);
+         mark(grid,n,m-1,r,l);
+    }
+    int numIslands(vector<vector<char>>& grid) {
+        int c=0;
+        int n=grid.size(),m=grid[0].size();
+        if(n==0) return 0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(grid[i][j]=='1'){
+                    mark(grid,i,j,n,m);
+                    c++;
+                }
+            }
+        }
+        return c;
+    }
+};
