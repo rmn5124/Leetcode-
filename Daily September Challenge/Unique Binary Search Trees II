@@ -1,0 +1,19 @@
+//https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/636/week-1-september-1st-september-7th/3960/
+
+class Solution {
+public:
+    int arrayNesting(vector<int>& nums) {
+        int res=0,n=nums.size();
+        vector<bool> seen(n);
+        for(auto i:nums){
+            int c=0;
+            while(!seen[i]){
+                c++;
+                seen[i]=true;
+                i=nums[i];
+            }
+            res=max(res,c);
+        }
+        return res;
+    }
+};
