@@ -1,0 +1,22 @@
+//https://leetcode.com/problems/longest-palindrome/
+
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map <char,int>m;
+        for(auto i:s)
+            m[i]++;
+        int c=0,sum=0;
+        for(auto i:m)
+        {
+            if(i.second % 2 !=0){
+                c++;
+             }
+        }
+     if(c>0){
+         sum=s.size()-c+1;
+     }
+        else sum=s.size();
+        return sum;
+    }
+};
