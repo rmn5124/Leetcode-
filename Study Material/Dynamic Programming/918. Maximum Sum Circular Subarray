@@ -1,0 +1,17 @@
+//https://leetcode.com/problems/maximum-sum-circular-subarray/
+
+class Solution {
+public:
+    int maxSubarraySumCircular(vector<int>& nums) {
+        int maxSum=nums[0],minSum=nums[0],sum=0,curMax=0,curMin=0;
+        for(auto i:nums){
+            sum+=i;
+            curMax=max(i,curMax +i);
+            maxSum=max(curMax,maxSum );
+            curMin=min(i,curMin +i);
+            minSum=min(curMin,minSum );    
+        }
+        if(maxSum >0) return max(maxSum,sum-minSum );
+        return maxSum;
+    }
+};
