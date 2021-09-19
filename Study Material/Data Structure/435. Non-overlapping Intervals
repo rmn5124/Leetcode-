@@ -1,0 +1,17 @@
+//https://leetcode.com/problems/non-overlapping-intervals/
+
+class Solution {
+public:
+    int eraseOverlapIntervals(vector<vector<int>>& a) {
+     sort(a.begin(),a.end());
+        int s=0,e=0,l=0;
+        while(e<a.size()){
+            s=e++;
+            while(e<a.size() and a[s][1]>a[e][0]){
+                if(a[e][1]<a[s][1]) a[s][1]=a[e][1];
+            e++;l++;
+        }
+        }
+        return l;
+    }
+};
