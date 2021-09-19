@@ -1,0 +1,16 @@
+//https://leetcode.com/problems/sort-colors/
+
+class Solution {
+public:
+    void sortColors(int A[], int n) {
+        int i = 0, lo = 0, hi = n - 1;
+        // invariants: A[0..lo-1] are less than pivot 1, A[lo..i-1] equal, A[hi+1..end] greater
+        while (i <= hi)
+            if (A[i] < 1)
+                swap(A[i++], A[lo++]);
+            else if (A[i] > 1)
+                swap(A[i], A[hi--]);
+            else
+                i++;
+    }
+};
