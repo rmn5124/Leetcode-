@@ -1,0 +1,19 @@
+//https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/636/week-1-september-1st-september-7th/3965/
+
+class Solution {
+public:
+    char slowestKey(vector<int>& releaseTimes, string keysPressed) {
+         int n = releaseTimes.size();
+        int longestDuration = releaseTimes[0];
+        char slowestKey = keysPressed[0];
+        for (int i = 1; i < n; i++) {
+            int keyReleaseTime = releaseTimes[i] - releaseTimes[i-1];
+            if (keyReleaseTime > longestDuration || (keyReleaseTime == longestDuration && keysPressed[i] > slowestKey)) {
+                longestDuration = keyReleaseTime;
+                slowestKey = keysPressed[i];
+            }
+        }
+        return slowestKey;
+    
+    }
+};
