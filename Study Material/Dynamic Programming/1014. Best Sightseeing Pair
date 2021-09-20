@@ -1,0 +1,13 @@
+//https://leetcode.com/problems/best-sightseeing-pair/
+
+class Solution {
+public:
+    int maxScoreSightseeingPair(vector<int>& v) {
+        int ans=INT_MIN,cur=INT_MIN;
+       for(auto i:v){
+           ans=max(ans,cur+i);
+           cur=max(cur,i)-1;
+       }
+        return ans;
+    }
+};
