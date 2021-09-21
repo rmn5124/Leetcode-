@@ -1,0 +1,16 @@
+//https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/638/week-3-september-15th-september-21st/3982/
+
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int c=0,ans=0;
+        for(auto i:nums){
+            if(i==1) c++;
+            else if(i==0){ 
+                ans=max(c,ans);c=0;
+            }
+        }
+        return max(c,ans);
+        
+    }
+};
