@@ -1,0 +1,20 @@
+//https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/639/week-4-september-22nd-september-28th/3984/
+
+
+class Solution {
+public:
+  
+    int maxLength(vector<string>& arr,string str="",int idx=0) {
+        set<char>s(str.begin(),str.end());
+      
+        int n=arr.size();
+        if(s.size()!=str.size()){
+            return 0;
+        }
+        int len=str.size();
+        for(int i=idx;i<n;i++)
+            len=max(len,maxLength(arr,str+arr[i],i+1));
+        
+            return len;
+    }
+};
