@@ -1,0 +1,24 @@
+//https://leetcode.com/problems/path-sum-ii/
+
+class Solution {
+public:
+   bool findPaths(TreeNode* node, int sum, vector<int> path, vector<vector<int> >& paths) {
+        if (!node) return 0;
+        path.push_back(node -> val);
+        if (!(node -> left) && !(node -> right) && sum == node -> val){
+            paths.push_back(path);     
+        }
+       if( findPaths(node -> left, sum - node -> val, path, paths)||
+        findPaths(node -> right, sum - node -> val, path, paths)) return 1;
+      // path.pop_back();
+       return 0;
+       
+   }
+     vector<vector<int>> pathSum(TreeNode* root, int sum) {
+        vector<vector<int> > paths;
+        vector<int> path;
+        findPaths(root, sum, path, paths);
+        return paths;  
+    }
+    
+};
