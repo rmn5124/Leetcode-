@@ -1,0 +1,17 @@
+//https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/639/week-4-september-22nd-september-28th/3985/
+
+class Solution {
+public:
+    string breakPalindrome(string p) {
+        int n=p.size();
+        if(n<2) return "";
+       for(int i=0;i<n/2;i++){
+           if(p[i]!='a'){
+               p[i]='a';
+               return p;
+           }
+       }
+        p[n-1]='b';
+        return p;
+    }
+};
