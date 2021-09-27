@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/longest-increasing-subsequence/
+
+class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int>sub;
+        for(auto x:nums){
+          
+            if(sub.empty() or sub[sub.size()-1] < x)
+                sub.push_back(x);
+            else {
+                int it=lower_bound(sub.begin(),sub.end(),x)-sub.begin(); 
+                sub[it]=x; 
+                 
+            }
+        }
+        return sub.size();
+    }
+};
