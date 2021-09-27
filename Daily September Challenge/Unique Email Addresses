@@ -1,0 +1,19 @@
+//https://leetcode.com/explore/challenge/card/september-leetcoding-challenge-2021/639/week-4-september-22nd-september-28th/3989/
+
+class Solution {
+public:
+    int numUniqueEmails(vector<string>& emails) {
+        unordered_set<string>s;
+        for(auto i:emails){
+            string t="";
+            for(auto j:i){
+                if(j=='+' or j=='@') break;
+                if(j=='.') continue;
+                t+=j;
+            }
+            t+=i.substr(i.find('@'));
+            s.insert(t);
+        }
+        return s.size();
+    }
+};
