@@ -1,0 +1,28 @@
+//https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+
+class Solution {
+public:
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+        if(!root) return {};
+        bool f=false;
+        vector<vector<int>> ans;
+       queue<TreeNode *>q;
+        q.push(root);
+        while(!q.empty()){
+            int n=q.size();
+            vector<int>v;
+            while(n--){
+                auto temp=q.front();
+                q.pop();
+                v.push_back(temp->val);
+                if(temp->left) q.push(temp->left);
+                if(temp->right) q.push(temp->right);
+                  
+            }
+            if(f) reverse(v.begin(),v.end());
+            f=!f;
+            ans.push_back (v);
+        }
+        return ans;
+    }
+};
