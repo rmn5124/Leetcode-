@@ -1,0 +1,28 @@
+//https://leetcode.com/problems/max-points-on-a-line/
+
+
+class Solution {
+public:
+    int maxPoints(vector<vector<int>>& points) {
+        int sz = points.size();
+        vector<vector<double>> table(sz, vector<double>(sz, 0));
+        int ans = 1;
+        unordered_map<int,int> mx;
+        unordered_map<int,int> my;
+        for (int i=0; i<sz; i++) {
+            int local=0;
+            unordered_map <double, int> m;
+            for (int j=i+1; j<sz; j++) {
+                double rate = double(points[i][1]-points[j][1])/double(points[i][0]-points[j][0]);
+                table[i][j] = rate;
+                table[j][i] = rate;
+                m[rate]++;
+                local = max(local, m[rate]);
+            }
+            mx[points[i][0]]++; ans = max(ans, mx[points[i][0]]);
+            my[points[i][1]]++; ans = max(ans, my[points[i][1]]);
+            ans = max(local+1, ans);
+        }
+        return ans;
+    }
+};
